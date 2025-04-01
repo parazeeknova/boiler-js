@@ -2,7 +2,14 @@
   "name": "boilerplate",
   "version": "0.0.1",
   "description": "Full-stack MERN boilerplate for modern web application development",
-  "keywords": ["nodejs", "react", "mongodb", "express", "mern", "mvc-architecture"],
+  "keywords": [
+    "nodejs",
+    "react",
+    "mongodb",
+    "express",
+    "mern",
+    "mvc-architecture"
+  ],
   "homepage": "https://github.com/parazeeknova/boilerplate#readme",
   "bugs": {
     "url": "https://github.com/parazeeknova/boilerplate/issues"
@@ -30,6 +37,7 @@
     "concurrently": "^9.1.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4"
+    "@biomejs/biome": "1.9.4",
+    "lefthook": "^1.11.6"
   }
 }
