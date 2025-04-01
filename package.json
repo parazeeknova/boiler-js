@@ -20,8 +20,11 @@
     "server": "cd backend && npm run start",
     "client": "cd frontend && npm run dev",
     "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "lint": "biome check .",
-    "format": "biome format . --write"
+    "lint": "biome check --write .",
+    "format": "biome format --write .",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down"
   },
   "dependencies": {
     "concurrently": "^9.1.2"

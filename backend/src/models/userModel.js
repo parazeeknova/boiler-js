@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
-const crypto = require('crypto');
+const crypto = require('node:crypto');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -40,7 +40,9 @@ const userSchema = new mongoose.Schema({
 
 // Hashing the password before saving the password if the user is created or password is modified
 userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
+  if (!this.isModified('password')) {
+    return next();
+  }
   this.password = await bcrypt.hash(this.password, 12);
   this.passwordConfirm = undefined;
   next();
@@ -48,7 +50,9 @@ userSchema.pre('save', async function (next) {
 
 // updating the password modified time stamp if user changes the password
 userSchema.pre('save', function (next) {
-  if (!this.isModified('password') || this.isNew) return next();
+  if (!this.isModified('password') || this.isNew) {
+    return next();
+  }
   this.passwordUpdatedAt = Date.now() - 1000;
   next();
 });
@@ -56,14 +60,13 @@ userSchema.pre('save', function (next) {
 // INSTANCE METHODS
 
 // Compare the password with the hashed password
-userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
-  return await bcrypt.compare(candidatePassword, userPassword);
-};
+userSchema.methods.correctPassword = async (candidatePassword, userPassword) =>
+  await bcrypt.compare(candidatePassword, userPassword);
 
 // Check if the user has changed the password after the jwt token was issued
 userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
   if (this.passwordUpdatedAt) {
-    const changedTimestamp = parseInt(this.passwordUpdatedAt.getTime() / 1000, 10);
+    const changedTimestamp = Number.parseInt(this.passwordUpdatedAt.getTime() / 1000, 10);
     return JWTTimestamp < changedTimestamp;
   }
 
