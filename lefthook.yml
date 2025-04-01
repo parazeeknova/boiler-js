@@ -1,19 +1,4 @@
-# pre-push:
-#   jobs:
-#     - name: packages audit
-#       tags:
-#         - frontend
-#         - security
-#       run: yarn audit
-#
-#     - name: gems audit
-#       tags:
-#         - backend
-#         - security
-#       run: bundle audit
-#
-
-pre-commit:
+pre-push:
   jobs:
     - name: lint frontend
       run: cd frontend && npm run lint
