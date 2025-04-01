@@ -1,30 +1,32 @@
 {
-	"name": "boilerplate",
-	"version": "0.0.1",
-	"description": "node MVC boilerplate for API development",
-	"keywords": [
-		"nodejs",
-		"mvc-architecture"
-	],
-	"homepage": "https://github.com/parazeeknova/boilerplate#readme",
-	"bugs": {
-		"url": "https://github.com/parazeeknova/boilerplate/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/parazeeknova/boilerplate.git"
-	},
-	"license": "MIT",
-	"author": "parazeeknova",
-	"type": "commonjs",
-	"main": "index.js",
-	"scripts": {
-		"dev": "nodemon src/index.js"
-	},
-	"dependencies": {
-		"concurrently": "^9.1.2"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4"
-	}
+  "name": "boilerplate",
+  "version": "0.0.1",
+  "description": "Full-stack MERN boilerplate for modern web application development",
+  "keywords": ["nodejs", "react", "mongodb", "express", "mern", "mvc-architecture"],
+  "homepage": "https://github.com/parazeeknova/boilerplate#readme",
+  "bugs": {
+    "url": "https://github.com/parazeeknova/boilerplate/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parazeeknova/boilerplate.git"
+  },
+  "license": "MIT",
+  "author": "parazeeknova",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run start",
+    "client": "cd frontend && npm run dev",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "lint": "biome check .",
+    "format": "biome format . --write"
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4"
+  }
 }

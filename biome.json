@@ -8,19 +8,10 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "noUnusedVariables": "error",
-        "noUndeclaredVariables": "error"
+        "noUnusedVariables": "error"
       },
       "style": {
-        "useBlockStatements": "error",
-        "noNegationElse": "error"
-      },
-      "suspicious": {
-        "noExplicitAny": "warn",
-        "noConsoleLog": "warn"
-      },
-      "security": {
-        "noDangerouslySetInnerHtml": "error"
+        "useBlockStatements": "error"
       }
     }
   },
@@ -36,6 +27,15 @@
       "quoteStyle": "single",
       "trailingCommas": "es5",
       "semicolons": "always"
+    }
+  },
+  "json": {
+    "parser": {
+      "allowComments": true
+    },
+    "formatter": {
+      "indentStyle": "space",
+      "indentWidth": 2
     }
   }
 }

@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 
 const sendEmail = async (options) => {
   // 1) Create a transporter
@@ -13,11 +13,11 @@ const sendEmail = async (options) => {
 
   // 2) Define the email options
   const mailOptions = {
-    from: "Jonas Schmedtmann <hello@jonas.io>",
+    from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_ADDRESS}>`,
     to: options.email,
     subject: options.subject,
     text: options.message,
-    // html:
+    html: options.html,
   };
 
   // 3) Actually send the email
